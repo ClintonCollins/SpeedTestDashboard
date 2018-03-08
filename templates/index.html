@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hourly Speedtests</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="col-12 col-md-10 offset-md-1 mt-4">
+        <div class="alert alert-info text-center">Showing results from the last 24 hours.</div>
+        {% for testgroup in SpeedTests %}
+        <div class="row mt-4">
+            <div style="width: 100%" class="card">
+                <h5 class="card-header">{{ testgroup.Date|date:"Monday, January _2 - 3:04 PM (MST)" }}</h5>
+                <div class="card-body">
+                    <div class="row">
+                    {% for test, key in testgroup.Tests %}
+                        <div class="col-12 col-md-3 mx-auto">
+                            <h5 class="mx-auto">{{ test.Server.Sponsor }}</h5>
+                            <img class="img-fluid" src="{{ test.Share }}">
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+              </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+</body>
+</html>
