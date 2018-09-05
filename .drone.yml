@@ -1,0 +1,11 @@
+workspace:
+  base: /go
+  path: src/SpeedTestDashboard
+
+pipeline:
+  build:
+    image: golang:latest
+    commands:
+    - go get
+    - go build
+    - echo "test"
